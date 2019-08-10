@@ -1,0 +1,9 @@
+<resources>
+    <!-- <string name="app_name">EncryptedVideoPlayer</string> -->
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="device_not_supported">Device not supported</string>
+    <string name="device_not_supported_message">FFmpeg is not supported on your device</string>
+    <string name="title_choose_file">Media File</string>
+    <string name="shipped_ffmpeg_version">n2.4.2</string>
+</resources>

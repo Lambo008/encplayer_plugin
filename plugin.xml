@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="cordova-plugin-exoplayer"
+        version="2.5.4">
+
+    <name>ExoPlayer</name>
+    <description>Cordova Plugin implementing ExoPlayer video/audio player</description>
+    <keywords>ecosystem:cordova,cordova-android,phonegap,cordova,ionic,android,exoplayer,exo,video,player</keywords>
+    <license>MIT</license>
+
+    <engines>
+        <engine name="cordova-android" version=">=4.0.0"/>
+    </engines>
+
+    <!-- <asset src="www/exoplayer.js" target-dir="js/exoplayer.js"/> -->
+
+    <js-module src="www/exoplayer.js" name="ExoPlayer">
+        <clobbers target="ExoPlayer"/>
+    </js-module>
+
+    <platform name="android">
+        <!-- <framework src="com.google.android.exoplayer:exoplayer:2.6.1"/> -->
+        <!-- <framework src="com.squareup.picasso:picasso:2.5.2"/> -->
+        <framework src="com.android.support:appcompat-v7:28.0.0"/>
+        <framework src="com.android.support.constraint:constraint-layout:1.1.3"/>
+        <framework src="com.google.code.gson:gson:2.8.5"/>
+        <framework src="com.obsez.android.lib.filechooser:filechooser:1.1.11"/>
+        <framework src="com.google.android.exoplayer:exoplayer:2.9.0"/>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ExoPlayer">
+                <param name="android-package" value="com.ramzi.chunkproject.EncPlayerPlugin"/>
+                <!-- <param name="android-package" value="co.frontyard.cordova.plugin.exoplayer.Plugin"/> -->
+            </feature>
+        </config-file>        
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.ramzi.chunkproject.ChunkMainActivity" android:theme="@style/AppThemeNoActionBar"/>
+            <activity android:name="com.ramzi.chunkproject.DecryptedExoPlayerActivity" android:theme="@style/AppThemeNoActionBar" android:screenOrientation="landscape"/>
+        </config-file>
+
+        <!-- <source-file src="src/res/values/ids.xml" target-dir="res/values/"/>
+        <source-file src="src/res/values/constants.xml" target-dir="res/values/"/>
+        <source-file src="src/res/values/styles.xml" target-dir="res/values/"/>
+
+        <source-file src="src/res/layout/exo_simple_player_view.xml" target-dir="res/layout/"/>
+        <source-file src="src/res/layout/exo_playback_control_view.xml" target-dir="res/layout/"/>
+        <source-file src="src/res/layout/exo_rounded_corners.xml" target-dir="res/layout/"/>
+
+        <source-file src="src/res/drawable/fastforward.png" target-dir="res/drawable/"/>
+        <source-file src="src/res/drawable/next.png" target-dir="res/drawable/"/>
+        <source-file src="src/res/drawable/pause.png" target-dir="res/drawable/"/>
+        <source-file src="src/res/drawable/play.png" target-dir="res/drawable/"/>
+        <source-file src="src/res/drawable/previous.png" target-dir="res/drawable/"/>
+        <source-file src="src/res/drawable/rewind.png" target-dir="res/drawable/"/> -->
+
+        <!-- <source-file src="src/android/CallbackResponse.java" target-dir="src/co/frontyard/cordova/plugin/exoplayer/"/>
+        <source-file src="src/android/Configuration.java" target-dir="src/co/frontyard/cordova/plugin/exoplayer/"/>
+        <source-file src="src/android/LayoutProvider.java" target-dir="src/co/frontyard/cordova/plugin/exoplayer/"/>
+        <source-file src="src/android/Payload.java" target-dir="src/co/frontyard/cordova/plugin/exoplayer/"/>
+        <source-file src="src/android/Player.java" target-dir="src/co/frontyard/cordova/plugin/exoplayer/"/>
+        <source-file src="src/android/Plugin.java" target-dir="src/co/frontyard/cordova/plugin/exoplayer/"/> -->
+
+        <!-- source files -->
+        <source-file src="src/android/EncPlayerPlugin.java" target-dir="src/com/ramzi/chunkproject/"/>
+        <source-file src="src/android/ChunkMainActivity.java" target-dir="src/com/ramzi/chunkproject/"/>
+        <source-file src="src/android/CallbackResponse.java" target-dir="src/com/ramzi/chunkproject/"/>
+        <source-file src="src/android/DecryptedExoPlayerActivity.java" target-dir="src/com/ramzi/chunkproject/"/>
+        <source-file src="src/android/common/CipherCommon.java" target-dir="src/com/ramzi/chunkproject/common/"/>
+        <source-file src="src/android/file/GatheringFilePiecesAsync.java" target-dir="src/com/ramzi/chunkproject/file/"/>
+        <source-file src="src/android/player/MediaFileCallback.java" target-dir="src/com/ramzi/chunkproject/player/"/>
+        <source-file src="src/android/player/animation/AnimationUtils.java" target-dir="src/com/ramzi/chunkproject/player/animation/"/>
+        <source-file src="src/android/player/animation/Graphics.java" target-dir="src/com/ramzi/chunkproject/player/animation/"/>
+        <source-file src="src/android/player/animation/PlayIcon.java" target-dir="src/com/ramzi/chunkproject/player/animation/"/>
+        <source-file src="src/android/player/animation/PlayIconDrawable.java" target-dir="src/com/ramzi/chunkproject/player/animation/"/>
+        <source-file src="src/android/player/animation/PlayIconView.java" target-dir="src/com/ramzi/chunkproject/player/animation/"/>
+        <source-file src="src/android/player/encryptionsource/EncryptedFileDataSource.java" target-dir="src/com/ramzi/chunkproject/player/encryptionsource/"/>
+        <source-file src="src/android/player/encryptionsource/EncryptedFileDataSourceFactory.java" target-dir="src/com/ramzi/chunkproject/player/encryptionsource/"/>
+        <source-file src="src/android/player/gestures/GestureListener.java" target-dir="src/com/ramzi/chunkproject/player/gestures/"/>
+        <source-file src="src/android/player/gestures/IGestureListener.java" target-dir="src/com/ramzi/chunkproject/player/gestures/"/>
+        <source-file src="src/android/player/utils/AudioReactor.java" target-dir="src/com/ramzi/chunkproject/player/utils/"/>
+        <source-file src="src/android/utils/AppPreferences.java" target-dir="src/com/ramzi/chunkproject/utils/"/>
+        <source-file src="src/android/utils/Constants.java" target-dir="src/com/ramzi/chunkproject/utils/"/>
+
+        <!-- resource files -->
+        <resource-file src="src/res/assets/configStartKey.cfg" target="assets/configStartKey.cfg"/>
+        <resource-file src="src/res/drawable/background_oval_black_transparent.xml" target="res/drawable/background_oval_black_transparent.xml"/>
+        <resource-file src="src/res/drawable/black_gradient.xml" target="res/drawable/black_gradient.xml"/>
+        <resource-file src="src/res/drawable/ic_arrow_back_black_24dp.xml" target="res/drawable/ic_arrow_back_black_24dp.xml"/>
+        <resource-file src="src/res/drawable/ic_brightness_high_white_72dp.xml" target="res/drawable/ic_brightness_high_white_72dp.xml"/>
+        <resource-file src="src/res/drawable/ic_brightness_low_white_72dp.xml" target="res/drawable/ic_brightness_low_white_72dp.xml"/>
+        <resource-file src="src/res/drawable/ic_brightness_medium_white_72dp.xml" target="res/drawable/ic_brightness_medium_white_72dp.xml"/>
+        <resource-file src="src/res/drawable/ic_fullscreen_expand.png" target="res/drawable/ic_fullscreen_expand.png"/>
+        <resource-file src="src/res/drawable/ic_fullscreen_skrink.png" target="res/drawable/ic_fullscreen_skrink.png"/>
+        <resource-file src="src/res/drawable/ic_launcher_background.xml" target="res/drawable/ic_launcher_background.xml"/>
+        <resource-file src="src/res/drawable/ic_volume_down_white_72dp.xml" target="res/drawable/ic_volume_down_white_72dp.xml"/>
+        <resource-file src="src/res/drawable/ic_volume_mute_white_72dp.xml" target="res/drawable/ic_volume_mute_white_72dp.xml"/>
+        <resource-file src="src/res/drawable/ic_volume_off_white_72dp.xml" target="res/drawable/ic_volume_off_white_72dp.xml"/>
+        <resource-file src="src/res/drawable/ic_volume_up_white_72dp.xml" target="res/drawable/ic_volume_up_white_72dp.xml"/>
+        <resource-file src="src/res/drawable/progress_circular_white.xml" target="res/drawable/progress_circular_white.xml"/>
+        <resource-file src="src/res/drawable-v24/ic_launcher_foreground.xml" target="res/drawable-v24/ic_launcher_foreground.xml"/>
+        <resource-file src="src/res/layout/exoplayer_activity.xml" target="res/layout/exoplayer_activity.xml"/>
+        <resource-file src="src/res/layout/activity_main.xml" target="res/layout/activity_main.xml"/>
+        <resource-file src="src/res/values/colors.xml" target="res/values/ep_colors.xml"/>
+        <resource-file src="src/res/values/dimens.xml" target="res/values/ep_dimens.xml"/>
+        <resource-file src="src/res/values/strings.xml" target="res/values/ep_strings.xml"/>
+        <resource-file src="src/res/values/styles.xml" target="res/values/ep_styles.xml"/>
+        <resource-file src="src/res/values-v21/styles.xml" target="res/values-v21/ep_styles.xml"/>
+
+    </platform>
+</plugin>
