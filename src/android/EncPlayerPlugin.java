@@ -39,7 +39,7 @@ public class EncPlayerPlugin extends CordovaPlugin {
     // private Player player;
 
     @Override
-    public boolean execute(final String action, final JSONArray data, final CallbackContext callbackContext) throws JSONException {
+    public boolean execute(final String action, final CallbackContext callbackContext) throws JSONException {
         try {
             final EncPlayerPlugin self = this;
             
