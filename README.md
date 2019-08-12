@@ -3,7 +3,7 @@
 
 Cordova media player plugin using Google's ExoPlayer framework.
 
-## Using
+## Sample project creation by using this plugin
 
 Create a new Cordova Project
 
@@ -12,7 +12,7 @@ Create a new Cordova Project
 Install the plugin
 
     $ cd hello
-    $ cordova plugin add cordova-plugin-encplayer
+    $ cordova plugin add https://github.com/Lambo008/encplayer_plugin.git
     
 
 Please create event.js in the www/js folder
@@ -23,33 +23,36 @@ Please create event.js in the www/js folder
        $('#start').click(function(){
           "use strict";
            console.log(navigator);
-
-           var params = {
-               url: "http://www.youtube.com/api/manifest/dash/id/bf5bb2419360daf1/source/youtube?as=fmp4_audio_clear,fmp4_sd_hd_clear&sparams=ip,ipbits,expire,source,id,as&ip=0.0.0.0&ipbits=0&expire=19000000000&signature=51AF5F39AB0CEC3E5497CD9C900EBFEAECCCB5C7.8506521BFC350652163895D4C26DEE124209AA9E&key=ik0"
-           };
-
-           window.ExoPlayer.startPlayer(params, captureSuccess, captureError);
+           window.ExoPlayer.startPlayer(params, playSuccess, playError);
     
        });
     
-        // capture callback
-       function captureSuccess(result) {
+        // play callback
+       function playSuccess(result) {
           "use strict";
            let str = result; //JSON.stringify(result);
            console.log(str);               
-           $("#result_str").text("result:"+str);
        };
    
-       // capture error callback
-       var captureError = function(error) {
+       // play error callback
+       var playError = function(error) {
            console.error("Error code: ", error.code);
-           $("#result_str").text("OCR failed:"+error.message);
        };
    
    })(window);
 ```
 
+Please add this code to the index.html for button, and include these codes.
 ```
+<button class="btn btn-block btn-primary" id="start">Play</button>
+...
+
+<script src="lib/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/event.js"></script>
+
+```
+Please make the lib folder in www directory, and copy the jquery-3.2.1.js.
+
 If we click the start button, we call the startplayer function of the www/exoplayer.js.
 At that time, exoplayer calls the EncPlayerPlugin.java file for interfacing with Cordova and Native java code.
 Finally, MainActivity will be opened.
