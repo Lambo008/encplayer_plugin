@@ -23,7 +23,7 @@ Please create event.js in the www/js folder
        $('#start').click(function(){
           "use strict";
            console.log(navigator);
-           window.ExoPlayer.startPlayer(params, playSuccess, playError);
+           window.ExoPlayer.startPlayer(playSuccess, playError);
     
        });
     
