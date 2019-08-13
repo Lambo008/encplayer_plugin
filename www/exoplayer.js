@@ -23,12 +23,12 @@
  SOFTWARE.
  */
 module.exports = {
-    startPlayer: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "ExoPlayer", "startPlayer");
+    startPlayer: function (parameters, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "ExoPlayer", "startPlayer", [parameters]);
     },
 
 
-    show: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "ExoPlayer", "show");
+    show: function (parameters, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "ExoPlayer", "show", [parameters]);
     }
 };
