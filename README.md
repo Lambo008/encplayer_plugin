@@ -23,20 +23,27 @@ Please create event.js in the www/js folder
        $('#start').click(function(){
           "use strict";
            console.log(navigator);
-           window.ExoPlayer.startPlayer(playSuccess, playError);
+
+           var params = {
+               url: "encplayer"
+           };
+
+           window.ExoPlayer.startPlayer(params, captureSuccess, captureError);
     
        });
     
-        // play callback
-       function playSuccess(result) {
+        // capture callback
+       function captureSuccess(result) {
           "use strict";
            let str = result; //JSON.stringify(result);
-           console.log(str);               
+           console.log(str);			   
+           $("#result_str").text("result:"+str);
        };
    
-       // play error callback
-       var playError = function(error) {
+       // capture error callback
+       var captureError = function(error) {
            console.error("Error code: ", error.code);
+           $("#result_str").text("OCR failed:"+error.message);
        };
    
    })(window);
