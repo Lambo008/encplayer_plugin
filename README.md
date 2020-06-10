@@ -12,7 +12,7 @@ Create a new Cordova Project
 Install the plugin
 
     $ cd hello
-    $ cordova plugin add https://github.com/Lambo008/encplayer_plugin.git
+    $ cordova plugin add https://github.com/DevKing-IA/encplayer_plugin.git
     
 
 Please create event.js in the www/js folder
